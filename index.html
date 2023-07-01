@@ -14,6 +14,7 @@
 </head>
 <body>
   <div id="clock"></div>
+  <div id="greeting"></div>
 
   <script>
     function updateClock() {
@@ -24,16 +25,31 @@
       var time = hours + ':' + addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
 
       document.getElementById('clock').textContent = time;
+      document.getElementById('greeting').textContent = getGreeting(hours);
     }
 
     function addLeadingZero(number) {
       return (number < 10 ? '0' : '') + number;
     }
 
-    // Initial clock update
+    function getGreeting(hours) {
+      var greeting = '';
+
+      if (hours >= 4 && hours < 12) {
+        greeting = 'Good morning!';
+      } else if (hours >= 12 && hours < 17) {
+        greeting = 'Good afternoon!';
+      } else {
+        greeting = 'Good evening!';
+      }
+
+      return greeting;
+    }
+
+    // Initial clock and greeting update
     updateClock();
 
-    // Update the clock every second
+    // Update the clock and greeting every second
     setInterval(updateClock, 1000);
   </script>
 </body>
