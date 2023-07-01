@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Large Clock</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 10vw;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var time = hours + ':' + addLeadingZero(minutes) + ':' + addLeadingZero(seconds);
+
+      document.getElementById('clock').textContent = time;
+    }
+
+    function addLeadingZero(number) {
+      return (number < 10 ? '0' : '') + number;
+    }
+
+    // Initial clock update
+    updateClock();
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
